@@ -7,8 +7,8 @@
 
 #include "Cat.h"
 
-Cat::Cat(char sex, int speed, int power, int lifetime)
-	:Animal(sex, speed, power, lifetime){
+Cat::Cat(char sex, string name, int power, int lifetime)
+	:Animal(sex, name, power, lifetime){
 	cout << "Constructor Cat" << endl;
 }
 

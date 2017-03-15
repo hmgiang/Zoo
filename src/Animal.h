@@ -8,19 +8,19 @@
 #define ANIMAL_H
 #include <iostream>
 #include <typeinfo>
+#include <string>
 using namespace std;
 
 class Animal{
 public:
-	Animal(char sex, int speed, int power, int lifetime);
+	Animal(char sex, string name, int power, int lifetime);
 	virtual ~Animal();
 
-	void seBattre(Animal *a);
 	virtual string getClass() = 0;
 
 public:
 	char sex;
-	int speed;
+	string name;
 	int power;
 	int lifetime;
 };

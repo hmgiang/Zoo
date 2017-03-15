@@ -6,8 +6,8 @@
  */
 #include "Mouse.h"
 
-Mouse::Mouse(char sex, int speed, int power, int lifetime)
-	:Animal(sex, speed, power, lifetime){
+Mouse::Mouse(char sex, string name, int power, int lifetime)
+	:Animal(sex, name, power, lifetime){
 	cout << "Constructor Mouse" << endl;
 }
 

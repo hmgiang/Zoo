@@ -13,7 +13,7 @@ using namespace std;
 
 class Mouse : public Animal {
 public:
-	Mouse(char sex, int speed, int power, int lifetime);
+	Mouse(char sex, string name, int power, int lifetime);
 	virtual ~Mouse();
 	virtual string getClass();
 };
