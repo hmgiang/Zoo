@@ -14,7 +14,15 @@ Animal::~Animal(){
 	cout << "Destructor Animal" << endl;
 }
 
-void Animal::seBattre(Animal &a){
-	cout << "a " << a.getClass() << endl;
-	cout << "this " << this->getClass() << endl;
+void Animal::seBattre(Animal *a){
+	if (this->getClass() != a->getClass() ){
+		if (this->power > a->power)
+		{
+			delete a;
+		}
+		else if (this->power < a->power)
+		{
+			delete this;
+		}
+	}
 }

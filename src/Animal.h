@@ -15,7 +15,7 @@ public:
 	Animal(char sex, int speed, int power, int lifetime);
 	virtual ~Animal();
 
-	void seBattre(Animal &a);
+	void seBattre(Animal *a);
 	virtual string getClass() = 0;
 
 public:
