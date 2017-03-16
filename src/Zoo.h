@@ -12,11 +12,12 @@
 #include "Mouse.h"
 #include "Cat.h"
 #include <list>
+using namespace std;
 
 class Zoo{
 public:
 	Zoo();
-	void createZoo();
+	void createZoo(int nb_cat, int nb_mouse);
 	void advanceZoo();
 
 private:

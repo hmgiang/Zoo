@@ -10,15 +10,19 @@
 #include "Zoo.h"
 #include <list>
 
+
 using namespace std;
 
 
 int main() {
 	cout << "!!! START !!!" << endl; // prints !!!Hello World!!!
 
+	int i = 10;
+	string s = "hllo";
 	Zoo z;
-	z.createZoo();
+	z.createZoo(2, 5);
 	z.advanceZoo();
+
 
 	cout << "!!! END !!!" << endl; // prints !!!Hello World!!!
 	return 0;

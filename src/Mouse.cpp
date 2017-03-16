@@ -8,7 +8,7 @@
 
 Mouse::Mouse(char sex, string name, int power, int lifetime)
 	:Animal(sex, name, power, lifetime){
-	cout << "Constructor Mouse" << endl;
+//	cout << "Constructor Mouse" << endl;
 }
 
 Mouse::~Mouse(){

@@ -7,7 +7,7 @@
 
 #include "Animal.h"
 Animal::Animal(char sex, string name, int power, int lifetime) : sex(sex), name(name), power(power), lifetime(lifetime){
-	cout << "Constructor Animal" << endl;
+//	cout << "Constructor Animal" << endl;
 }
 
 Animal::~Animal(){

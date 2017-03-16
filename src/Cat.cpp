@@ -9,7 +9,7 @@
 
 Cat::Cat(char sex, string name, int power, int lifetime)
 	:Animal(sex, name, power, lifetime){
-	cout << "Constructor Cat" << endl;
+//	cout << "Constructor Cat" << endl;
 }
 
 Cat::~Cat(){
