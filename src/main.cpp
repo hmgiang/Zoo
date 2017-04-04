@@ -17,13 +17,12 @@ using namespace std;
 int main() {
 	cout << "!!! START !!!" << endl; // prints !!!Hello World!!!
 
-	int i = 10;
-	string s = "hllo";
 	Zoo z;
 	z.createZoo(2, 5);
-	z.advanceZoo();
-
+	for(int i = 0;  i < 100; i++)
+		z.advanceZoo();
 
 	cout << "!!! END !!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }
+

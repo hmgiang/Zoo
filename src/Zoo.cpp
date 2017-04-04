@@ -12,10 +12,6 @@
 #include <string.h>
 #include "Zoo.h"
 
-Zoo::Zoo() {
-	srand((unsigned) time(0));
-}
-
 static char getRandomSex() {
 	if (rand() % 2 == 0)
 		return 'F';
@@ -24,11 +20,26 @@ static char getRandomSex() {
 }
 
 template<typename T>
-string NumberToString(T Number) {
+static string NumberToString(T Number) {
 	ostringstream ss;
 	ss << Number;
 	return ss.str();
 }
+
+Zoo::Zoo() {
+	srand((unsigned) time(0));
+}
+
+list<Animal *>::iterator Zoo::getRandomIterator() {
+	int r = rand() % list_a.size();
+	cout <<"random number = " << r << endl;
+	list<Animal *>::iterator it = list_a.begin();
+	for(int i = 0; i < r; i++){
+		it++;
+	}
+	return it;
+}
+
 
 void Zoo::createZoo(int nb_cat, int nb_mouse) {
 
@@ -50,19 +61,22 @@ void Zoo::createZoo(int nb_cat, int nb_mouse) {
 
 void Zoo::getMeeting(Animal *a, Animal *b) {
 	if (a->getClass() != b->getClass()) {
-		cout << "they can battle until dead between " << a->name << " and "
-				<< b->name << endl;
+		string name;
 		if (a->power > b->power) {
+			name = b->name;
 			delete b;
 			list_a.remove(b);
 		} else if (a->power < b->power) {
+			name = a->name;
 			delete a;
 			list_a.remove(a);
 		}
+		if (name.size()>0) cout << "Animal " << name << " is dead" << endl;
+
 	} else // they are in the same class, they create a new children
 	{
-		cout << "they can creat a new children between " << a->name << " and " << b->name << endl;
 		if (a->sex != b->sex) {
+			cout << "they creat a new children between " << a->name << " and " << b->name << endl;
 			if (a->getClass() == "Mouse")
 				list_a.push_back(new Mouse('M', "mickey2", 3, 10));
 			else if (a->getClass() == "Cat")
@@ -73,9 +87,25 @@ void Zoo::getMeeting(Animal *a, Animal *b) {
 	}
 }
 
+int Zoo::getSizeZoo(){
+	return list_a.size();
+}
+
 void Zoo::advanceZoo() {
-	list<Animal *>::iterator it2 = list_a.begin();
-	list<Animal *>::iterator it1 = it2++;
+	if (list_a.size() < 2 ){
+		cout << "Zoo is too small"<< endl;
+		return ;
+	}
+
+	list<Animal *>::iterator it1 = getRandomIterator();
+	list<Animal *>::iterator it2 = getRandomIterator();
+
+	if ( (*it1==*it2) && (*it1==*(--list_a.end())) ) {
+		it2 = it1--;
+	}
+	else if ( (*it1==*it2) ){
+		it2 = it1++;
+	}
 	getMeeting(*it1, *it2);
 	cout << "size list_a = " << list_a.size() << endl;
 }
