@@ -19,11 +19,13 @@ public:
 	Zoo();
 	void createZoo(int nb_cat, int nb_mouse);
 	void advanceZoo();
-	int getSizeZoo();
+	int getSize();
 
 private:
 	void getMeeting(Animal *a, Animal *b);
 	list<Animal *>::iterator getRandomIterator();
+	void getGrowing();
+	Animal* newAnimal(string str);
 
 	list<Animal *> list_a;
 };

@@ -11,8 +11,13 @@ Mouse::Mouse(char sex, string name, int power, int lifetime)
 //	cout << "Constructor Mouse" << endl;
 }
 
+Mouse::Mouse(char sex, string name, int power, int lifetime, int age)
+	:Animal(sex, name, power, lifetime, age){
+//	cout << "Constructor Mouse" << endl;
+}
+
 Mouse::~Mouse(){
-	cout << "Destructor Mouse" << endl;
+//	cout << "Destructor Mouse" << endl;
 }
 
 string Mouse::getClass(){

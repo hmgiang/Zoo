@@ -13,7 +13,7 @@ using namespace std;
 
 class Animal{
 public:
-	Animal(char sex, string name, int power, int lifetime);
+	Animal(char sex, string name, int power, int lifetime, int age = 0);
 	virtual ~Animal();
 
 	virtual string getClass() = 0;
@@ -23,6 +23,10 @@ public:
 	string name;
 	int power;
 	int lifetime;
+	int age;
+
+	static int age_dead;
+	static int age_adulte;
 };
 
 #endif

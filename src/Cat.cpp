@@ -12,8 +12,13 @@ Cat::Cat(char sex, string name, int power, int lifetime)
 //	cout << "Constructor Cat" << endl;
 }
 
+Cat::Cat(char sex, string name, int power, int lifetime, int age)
+	:Animal(sex, name, power, lifetime, age){
+//	cout << "Constructor Cat" << endl;
+}
+
 Cat::~Cat(){
-	cout << "Destructor Cat" << endl;
+//	cout << "Destructor Cat" << endl;
 }
 
 string Cat::getClass(){
