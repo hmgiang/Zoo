@@ -5,12 +5,25 @@
  *      Author: mgiang
  */
 #include "Animal.h"
+#include <cstdlib>
 
 int Animal::age_dead = 20;
-int Animal::age_adulte = 1;
+int Animal::age_adulte = 5;
+
+static char getRandomSex() {
+	if (rand() % 2 == 0)
+		return 'F';
+	else
+		return 'M';
+}
 
 
-Animal::Animal(char sex, string name, int power, int lifetime, int age) : sex(sex), name(name), power(power), lifetime(lifetime), age(age){
+Animal::Animal(string name, int power):name(name), power(power){
+	sex = getRandomSex();
+	age = 0;
+}
+
+Animal::Animal(string name, int power, char sex, int age) : name(name), power(power), sex(sex), age(age){
 
 }
 

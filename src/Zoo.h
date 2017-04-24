@@ -16,18 +16,20 @@ using namespace std;
 
 class Zoo{
 public:
-	Zoo();
+	Zoo(int x, int y);
 	void createZoo(int nb_cat, int nb_mouse);
 	void advanceZoo();
 	int getSize();
+	void viewZoo();
 
 private:
 	void getMeeting(Animal *a, Animal *b);
-	list<Animal *>::iterator getRandomIterator();
+	list<Animal *>::iterator getRandomItAnimal();
 	void getGrowing();
-	Animal* newAnimal(string str);
 
 	list<Animal *> list_a;
+	int size_x;
+	int size_y;
 };
 
 
