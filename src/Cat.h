@@ -13,8 +13,8 @@ using namespace std;
 
 class Cat:public Animal{
 public:
-	Cat();
-	Cat(string name, int power, char sex, int age);
+	Cat(pos p);
+	Cat(pos p, string name, int power, char sex, int age);
 	virtual ~Cat();
 	virtual string getClass();
 };

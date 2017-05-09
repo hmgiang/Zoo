@@ -17,12 +17,13 @@ int main() {
 	cout << "!!! START !!!" << endl;
 
 	Zoo z(10, 20);
+    z.createZoo(1, 5);
 	z.viewZoo();
-//	z.createZoo(1, 5);
-//	for(int i = 0;  i < 50; i++){
-//		cout << i << " = ";
-//		z.advanceZoo();
-//	}
+	for(int i = 0;  i < 50; i++){
+		cout << i << " = ";
+		z.advanceZoo();
+		z.viewZoo();
+	}
 //	cout << "Size of Zoo = " << z.getSize() << endl;
 	cout << "!!! END !!!" << endl; // prints !!!Hello World!!!
 	return 0;

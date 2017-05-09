@@ -16,21 +16,26 @@ using namespace std;
 
 class Zoo{
 public:
-	Zoo(int x, int y);
+	Zoo(int row, int col);
 	void createZoo(int nb_cat, int nb_mouse);
 	void advanceZoo();
 	int getSize();
 	void viewZoo();
+	~Zoo();
 
 private:
 	void getMeeting(Animal *a, Animal *b);
 	list<Animal *>::iterator getRandomItAnimal();
 	void getGrowing();
+	pos getRandomPos();
+	Zoo & operator==(Zoo &z1);
 
 	list<Animal *> list_a;
-	int size_x;
-	int size_y;
+	int row;
+	int col;
+	char **tab;
 };
+
 
 
 #endif /* ZOO_H_ */

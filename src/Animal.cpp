@@ -18,12 +18,14 @@ static char getRandomSex() {
 }
 
 
-Animal::Animal(string name, int power):name(name), power(power){
+Animal::Animal(pos p, string name, int power):name(name), power(power){
+	this->p.x = p.x;
+	this->p.y = p.y;
 	sex = getRandomSex();
 	age = 0;
 }
 
-Animal::Animal(string name, int power, char sex, int age) : name(name), power(power), sex(sex), age(age){
+Animal::Animal(pos p, string name, int power, char sex, int age) : name(name), power(power), sex(sex), age(age){
 
 }
 

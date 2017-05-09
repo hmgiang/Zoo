@@ -12,14 +12,39 @@
 #include "Zoo.h"
 
 
-Zoo::Zoo(int x, int y) {
+Zoo::Zoo(int row, int col):row(row), col(col) {
 	srand((unsigned) time(0));
-	size_x = x;
-	size_y = y;
+	tab = new char*[row];
+	for(int i = 0; i < row; ++i) {
+	    tab[i] = new char[col];
+	}
+	for(int i = 0; i < row; i++){
+		for(int j = 0; j < col; j++){
+			tab[i][j] = '^';
+		}
+	}
+}
+
+Zoo::~Zoo(){
+	for(int i = 0; i < col; ++i) {
+	    delete [] tab[i];
+	}
+	delete [] tab;
 }
 
 int Zoo::getSize(){
 	return list_a.size();
+}
+
+pos Zoo::getRandomPos(){
+	pos p = { rand()%row, rand()%col};
+	for(list<Animal*>::iterator it = list_a.begin(); it!=list_a.end(); it++){
+		if ( (*it)->p.x == p.x && (*it)->p.y==p.y) {
+			cout << "an animal is already here " << p.x << "," << p.y << endl;
+			return getRandomPos();
+		}
+	}
+	return p;
 }
 
 list<Animal *>::iterator Zoo::getRandomItAnimal() {
@@ -31,10 +56,14 @@ list<Animal *>::iterator Zoo::getRandomItAnimal() {
 
 void Zoo::createZoo(int nb_cat, int nb_mouse) {
 	for (int i = 0; i < nb_mouse; i++) {
-		list_a.push_back(new Mouse());
+		pos p = getRandomPos();
+		list_a.push_back(new Mouse(p));
+		tab[p.x][p.y] = 'M';
 	}
 	for (int i = 0; i < nb_cat; i++) {
-		list_a.push_back(new Cat());
+		pos p = getRandomPos();
+		list_a.push_back(new Cat(p));
+		tab[p.x][p.y] = 'C';
 	}
 }
 
@@ -44,10 +73,12 @@ void Zoo::getMeeting(Animal *a, Animal *b) {
 		string name_animal_dead;
 		if (a->power > b->power) {
 			name_animal_dead = b->name;
+			tab[b->p.x][b->p.y] ='^';
 			delete b;
 			list_a.remove(b);
 		} else if (a->power < b->power) {
 			name_animal_dead = a->name;
+			tab[a->p.x][a->p.y] ='^';
 			delete a;
 			list_a.remove(a);
 		}
@@ -58,10 +89,14 @@ void Zoo::getMeeting(Animal *a, Animal *b) {
 		if (a->sex != b->sex) {
 			cout << "A new children between " << a->name << " and " << b->name << endl;
 			if (a->getClass() == "Mouse"){
-				list_a.push_back(new Mouse());
+				pos p = getRandomPos();
+				list_a.push_back(new Mouse(p));
+				tab[p.x][p.y] = 'M';
 			}
 			else if (a->getClass() == "Cat"){
-				list_a.push_back(new Cat());
+				pos p = getRandomPos();
+				list_a.push_back(new Cat(p));
+				tab[p.x][p.y] = 'C';
 			}
 			else{
 				cout << "Don't find the class - bad context" << endl;
@@ -83,13 +118,13 @@ void Zoo::getGrowing(){
 		else if ((*it)->age == Animal::age_adulte){
 			cout << (*it)->name << " will become a adult" << endl;
 			if ((*it)->getClass() == "Mouse"){
-				Mouse *m = new Mouse((*it)->name, (*it)->power, (*it)->sex, (*it)->age);
+				Mouse *m = new Mouse((*it)->p,(*it)->name, (*it)->power, (*it)->sex, (*it)->age);
 				Mouse *ptr_m = static_cast<Mouse*>(*it);
 				(*it) = m;
 				delete (ptr_m);
 			}
 			else if ((*it)->getClass() == "Cat"){
-				Cat *c = new Cat((*it)->name, (*it)->power, (*it)->sex, (*it)->age);
+				Cat *c = new Cat((*it)->p, (*it)->name, (*it)->power, (*it)->sex, (*it)->age);
 				Cat *ptr_c = static_cast<Cat*>(*it);
 				(*it) = c;
 				delete (ptr_c);
@@ -121,11 +156,10 @@ void Zoo::advanceZoo() {
 
 
 void Zoo::viewZoo(){
-	for(int i = 0; i < size_x; i++){
-		for(int j = 0; j <size_y; j++){
-			cout << "x" ;
+	for(int i = 0; i < row; i++){
+		for(int j = 0; j < col; j++){
+			cout << tab[i][j];
 		}
 		cout << endl;
 	}
-	cout << endl;
 }

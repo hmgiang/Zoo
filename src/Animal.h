@@ -11,15 +11,15 @@
 #include <string>
 using namespace std;
 
-typedef struct point{
+typedef struct pos{
 	int x;
 	int y;
-}point;
+}pos;
 
 class Animal{
 public:
-	Animal(string name, int power);
-	Animal(string name, int power, char sex, int age = 0);
+	Animal(pos p, string name, int power);
+	Animal(pos p, string name, int power, char sex, int age = 0);
 	virtual ~Animal();
 
 	virtual string getClass() = 0;
@@ -29,7 +29,7 @@ public:
 	int power;
 	char sex;
 	int age;
-	point p;
+	pos p;
 
 	static int age_dead;
 	static int age_adulte;

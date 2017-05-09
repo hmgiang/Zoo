@@ -14,13 +14,13 @@ static string getNameMouse(){
 	return ss.str();
 }
 
-Mouse::Mouse()
-	:Animal(getNameMouse(), rand() % 10 + 10){
+Mouse::Mouse(pos p)
+	:Animal(p, getNameMouse(), rand() % 10 + 10){
 }
 
 
-Mouse::Mouse(string name, int power, char sex, int age)
-	:Animal(name, power, sex, age){
+Mouse::Mouse(pos p, string name, int power, char sex, int age)
+	:Animal(p, name, power, sex, age){
 }
 
 Mouse::~Mouse(){

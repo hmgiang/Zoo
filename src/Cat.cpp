@@ -15,14 +15,14 @@ static string getNameCat(){
 	return ss.str();
 }
 
-Cat::Cat()
-	:Animal(getNameCat(), rand() % 10 + 10)
+Cat::Cat(pos p)
+	:Animal(p, getNameCat(), rand() % 10 + 10)
 {
 
 }
 
-Cat::Cat(string name, int power, char sex, int age)
-	:Animal(name, power, sex, age){
+Cat::Cat(pos p, string name, int power, char sex, int age)
+	:Animal(p, name, power, sex, age){
 }
 
 Cat::~Cat(){
