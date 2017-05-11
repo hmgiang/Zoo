@@ -98,6 +98,7 @@ void Zoo::getMeeting(Animal *a, Animal *b) {
 void Zoo::getGrowing(){
 	for(list<Animal*>::iterator it = list_a.begin(); it!=list_a.end();){
 		(*it)->lifetime = (*it)->lifetime + 1;
+		cout << "hot fix 2" << endl;
 		(*it)->age = (*it)->age + 1;
 
 		if ((*it)->lifetime == Animal::age_dead){
