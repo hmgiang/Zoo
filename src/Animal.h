@@ -11,19 +11,25 @@
 #include <string>
 using namespace std;
 
+typedef struct pos{
+	int x;
+	int y;
+}pos;
+
 class Animal{
 public:
-	Animal(char sex, string name, int power, int lifetime, int age = 0);
+	Animal(pos p, string name, int power);
+	Animal(pos p, string name, int power, char sex, int age = 0);
 	virtual ~Animal();
 
 	virtual string getClass() = 0;
 
 public:
-	char sex;
 	string name;
 	int power;
-	int lifetime;
+	char sex;
 	int age;
+	pos p;
 
 	static int age_dead;
 	static int age_adulte;

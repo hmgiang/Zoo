@@ -5,15 +5,22 @@
  *      Author: mgiang
  */
 #include "Mouse.h"
+#include <cstdlib>
+#include <sstream>
 
-Mouse::Mouse(char sex, string name, int power, int lifetime)
-	:Animal(sex, name, power, lifetime){
-//	cout << "Constructor Mouse" << endl;
+static string getNameMouse(){
+	ostringstream ss;
+	ss << "mickey"<< rand();
+	return ss.str();
 }
 
-Mouse::Mouse(char sex, string name, int power, int lifetime, int age)
-	:Animal(sex, name, power, lifetime, age){
-//	cout << "Constructor Mouse" << endl;
+Mouse::Mouse(pos p)
+	:Animal(p, getNameMouse(), rand() % 10 + 10){
+}
+
+
+Mouse::Mouse(pos p, string name, int power, char sex, int age)
+	:Animal(p, name, power, sex, age){
 }
 
 Mouse::~Mouse(){

@@ -6,15 +6,23 @@
  */
 
 #include "Cat.h"
+#include <cstdlib>
+#include <sstream>
 
-Cat::Cat(char sex, string name, int power, int lifetime)
-	:Animal(sex, name, power, lifetime){
-//	cout << "Constructor Cat" << endl;
+static string getNameCat(){
+	ostringstream ss;
+	ss << "tom"<< rand();
+	return ss.str();
 }
 
-Cat::Cat(char sex, string name, int power, int lifetime, int age)
-	:Animal(sex, name, power, lifetime, age){
-//	cout << "Constructor Cat" << endl;
+Cat::Cat(pos p)
+	:Animal(p, getNameCat(), rand() % 10 + 10)
+{
+
+}
+
+Cat::Cat(pos p, string name, int power, char sex, int age)
+	:Animal(p, name, power, sex, age){
 }
 
 Cat::~Cat(){
