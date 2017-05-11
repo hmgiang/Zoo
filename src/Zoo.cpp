@@ -26,7 +26,7 @@ Zoo::Zoo(int row, int col):row(row), col(col) {
 }
 
 Zoo::~Zoo(){
-	for(int i = 0; i < col; ++i) {
+	for(int i = 0; i < row; ++i) {
 	    delete [] tab[i];
 	}
 	delete [] tab;
