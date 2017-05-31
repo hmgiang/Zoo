@@ -11,7 +11,7 @@
 
 static string getNameCat(){
 	ostringstream ss;
-	ss << "tom"<< rand();
+	ss << "tom"<< rand()%1000;
 	return ss.str();
 }
 

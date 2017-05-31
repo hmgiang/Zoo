@@ -10,12 +10,12 @@
 
 static string getNameMouse(){
 	ostringstream ss;
-	ss << "mickey"<< rand();
+	ss << "mickey"<< rand()%1000;
 	return ss.str();
 }
 
 Mouse::Mouse(pos p)
-	:Animal(p, getNameMouse(), rand() % 10 + 10){
+	:Animal(p, getNameMouse(), rand() % 10){
 }
 
 

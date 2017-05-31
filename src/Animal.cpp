@@ -23,6 +23,7 @@ Animal::Animal(pos p, string name, int power):name(name), power(power){
 	this->p.y = p.y;
 	sex = getRandomSex();
 	age = 0;
+	cout << "new animal " << name << endl;
 }
 
 Animal::Animal(pos p, string name, int power, char sex, int age) : name(name), power(power), sex(sex), age(age){
